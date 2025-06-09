@@ -7,31 +7,50 @@ from pointllm.utils import *
 from pointllm.data.utils import *
 
 class ModelNet(Dataset):
-    def __init__(self, config_path, split, subset_nums=-1, use_color=False):
+    def __init__(self, config_path, split, subset_nums=-1, use_color=False, data_path=None):
         """
         Args:
-            data_args:
-                split: train or test
+            config_path: パスまたはNone
+            split: train or test
+            subset_nums: サブセット数（-1で全データ）
+            use_color: 色情報を使用するか
+            data_path: カスタムデータのパス（指定時はconfig_pathより優先）
         """
         super(ModelNet, self).__init__()
-
+        
+        # カスタムデータパスがある場合はそちらを優先
+        self.custom_data_path = data_path
+        
         if config_path is None:
-            # * use the default config file in the same dir
+            # デフォルト設定ファイルを使用
             config_path = os.path.join(os.path.dirname(__file__), "modelnet_config", "ModelNet40.yaml")
 
-        config = cfg_from_yaml_file(config_path)
-        # * check data path
-        self.root = config["DATA_PATH"]
-    
-        if not os.path.exists(self.root):
-            print(f"Data path {self.root} does not exist. Please check your data path.")
-            exit()
+        # config_pathがNoneでない場合でも、存在しない場合はデフォルトを使用
+        if config_path and not os.path.exists(config_path):
+            print(f"Warning: Config file {config_path} not found, using default settings")
+            config_path = None
 
-        self.npoints = config.npoints
-        self.num_category = config.NUM_CATEGORY # * should be 40
-        self.random_sample = config.random_sampling
-        self.use_height = config.use_height
-        self.use_normals = config.USE_NORMALS
+        if config_path:
+            config = cfg_from_yaml_file(config_path)
+            self.root = config["DATA_PATH"]
+            self.npoints = config.npoints
+            self.num_category = config.NUM_CATEGORY # * should be 40
+            self.random_sample = config.random_sampling
+            self.use_height = config.use_height
+            self.use_normals = config.USE_NORMALS
+        else:
+            # デフォルト設定
+            self.root = "data/modelnet40_data"
+            self.npoints = 8192
+            self.num_category = 40
+            self.random_sample = True
+            self.use_height = False
+            self.use_normals = False
+    
+        if not os.path.exists(self.root) and not self.custom_data_path:
+            print(f"Data path {self.root} does not exist. Please check your data path.")
+            # exit() の代わりに警告を出すだけにする
+
         self.subset_nums = subset_nums
         self.normalize_pc = True
         self.use_color = use_color
@@ -43,17 +62,27 @@ class ModelNet(Dataset):
         self.split = split
         assert (self.split == 'train' or self.split == 'test')
 
-        self.catfile = os.path.join(os.path.dirname(__file__), "modelnet_config", 'modelnet40_shape_names_modified.txt')
+        # Shape names file
+        shape_names_file = os.path.join(os.path.dirname(__file__), "modelnet_config", 'modelnet40_shape_names_modified.txt')
+        if not os.path.exists(shape_names_file):
+            # ファイルが存在しない場合、ORB-PointLLM用のデフォルトを作成
+            self._create_default_shape_names()
+            shape_names_file = os.path.join(os.path.dirname(__file__), 'modelnet40_shape_names_modified.txt')
 
         # "tv_stand" -> "tv stand"
-        self.categories = [line.rstrip() for line in open(self.catfile)] # * list of category names
+        self.categories = [line.rstrip() for line in open(shape_names_file)] # * list of category names
 
-        self.save_path = os.path.join(self.root,
+        # カスタムデータパスが指定されている場合はそちらを使用
+        if self.custom_data_path:
+            print(f'Load custom data from {self.custom_data_path}...')
+            self.save_path = self.custom_data_path
+        else:
+            self.save_path = os.path.join(self.root,
                                     'modelnet%d_%s_%dpts_fps.dat' % (self.num_category, self.split, self.npoints))
-
-        print('Load processed data from %s...' % self.save_path)
+            print('Load processed data from %s...' % self.save_path)
+            
         with open(self.save_path, 'rb') as f:
-            self.list_of_points, self.list_of_labels = pickle.load(f) # * ndarray of N, C: (8192, 6) (xyz and normals)
+            self.list_of_points, self.list_of_labels = pickle.load(f)
         
         if self.subset_nums > 0:
             # * set random seed
@@ -66,6 +95,21 @@ class ModelNet(Dataset):
 
         # * print len
         print(f"Load {len(self.list_of_points)} data from {self.save_path}.")
+
+    def _create_default_shape_names(self):
+        """デフォルトのModelNet40カテゴリ名を作成"""
+        default_categories = [
+            "airplane", "bathtub", "bed", "bench", "bookshelf", "bottle", "bowl", "car", "chair", "cone",
+            "cup", "curtain", "desk", "door", "dresser", "flower pot", "glass box", "guitar", "keyboard", "lamp",
+            "laptop", "mantel", "monitor", "night stand", "person", "piano", "plant", "radio", "range hood", "sink",
+            "sofa", "stairs", "stool", "table", "tent", "toilet", "tv stand", "vase", "wardrobe", "xbox"
+        ]
+        
+        shape_names_path = os.path.join(os.path.dirname(__file__), 'modelnet40_shape_names_modified.txt')
+        with open(shape_names_path, 'w') as f:
+            for category in default_categories:
+                f.write(category + '\n')
+        print(f"Created default shape names file at {shape_names_path}")
 
     def __len__(self):
         return len(self.list_of_labels)

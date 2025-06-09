@@ -1,0 +1,512 @@
+{
+  "task_type": "object_identification",
+  "prompt_index": 0,
+  "prompt_template": "What is this?",
+  "model_config": {
+    "enable_multi_cloud": false,
+    "max_point_clouds": 1,
+    "point_token_len": 513
+  },
+  "results": [
+    {
+      "sample_id": 0,
+      "num_clouds": 1,
+      "task_type": "object_identification",
+      "prompt": "[Point Cloud]\nWhat is this?",
+      "model_output": "The 3D object model is a multifaceted rectangular box featuring various vibrant colors. It seems like a storage container due to its geometrical shape, suitable for holding diverse items. The different colors possibly indicate different categories or types of items. Although specific details about its size, material, or internal structure are not mentioned, based on common knowledge, it can be inferred that this object can be used in a variety of settings, including homes, offices, and other places where storage organization is valued.",
+      "ground_truth": {
+        "indices": [
+          0
+        ],
+        "labels": [
+          25
+        ],
+        "label_names": [
+          "piano"
+        ],
+        "task_type": "object_identification",
+        "sample_id": 0,
+        "object_id": 0,
+        "ground_truth_labels": [
+          "piano"
+        ],
+        "original_modelnet_index": 12
+      }
+    },
+    {
+      "sample_id": 1,
+      "num_clouds": 1,
+      "task_type": "object_identification",
+      "prompt": "[Point Cloud]\nWhat is this?",
+      "model_output": "The 3D object model is a vibrant, cartoon-esque geometric figure colored in bright red. The design is visually appealing with smooth and curved lines contributing to its playful and non-threatening aesthetic. Its simplified shape and exaggerated features are typical of cartoon design, which is often used in children's programming, educational materials, or in an animation or game to make the environment more engaging and friendly.",
+      "ground_truth": {
+        "indices": [
+          1
+        ],
+        "labels": [
+          26
+        ],
+        "label_names": [
+          "plant"
+        ],
+        "task_type": "object_identification",
+        "sample_id": 1,
+        "object_id": 1,
+        "ground_truth_labels": [
+          "plant"
+        ],
+        "original_modelnet_index": 13
+      }
+    },
+    {
+      "sample_id": 2,
+      "num_clouds": 1,
+      "task_type": "object_identification",
+      "prompt": "[Point Cloud]\nWhat is this?",
+      "model_output": "This is a 3D object model of a vivid cartoon character with a predominantly green and black color scheme. It stands out due to the unique combination of both bright and dark colors. The character is intriguing and may be a part of a game, animation or a graphic novel. The details of the character, however, aren't clear due to the limited information available.",
+      "ground_truth": {
+        "indices": [
+          2
+        ],
+        "labels": [
+          2
+        ],
+        "label_names": [
+          "bed"
+        ],
+        "task_type": "object_identification",
+        "sample_id": 2,
+        "object_id": 2,
+        "ground_truth_labels": [
+          "bed"
+        ],
+        "original_modelnet_index": 1
+      }
+    },
+    {
+      "sample_id": 3,
+      "num_clouds": 1,
+      "task_type": "object_identification",
+      "prompt": "[Point Cloud]\nWhat is this?",
+      "model_output": "This 3D model represents a rectangular, cubed box with variously colored surfaces. The box is divided into two distinct halves, with one side being a solid blue and the other a solid green. The remaining sides are made up of red and yellow panels. The different colored panels suggest the box could be used for storing different types of items, or could be used as a colorful storage container for children.",
+      "ground_truth": {
+        "indices": [
+          3
+        ],
+        "labels": [
+          16
+        ],
+        "label_names": [
+          "glass box"
+        ],
+        "task_type": "object_identification",
+        "sample_id": 3,
+        "object_id": 3,
+        "ground_truth_labels": [
+          "glass box"
+        ],
+        "original_modelnet_index": 8
+      }
+    },
+    {
+      "sample_id": 4,
+      "num_clouds": 1,
+      "task_type": "object_identification",
+      "prompt": "[Point Cloud]\nWhat is this?",
+      "model_output": "This is a 3D model of a table, illustrated in a cartoon style. The object's design showcases simplicity and smoothness, typical of cartoon graphics. The shape, size, and structure of the table are intentionally exaggerated to create a lively and playful visual effect. Although this kind of table model is not realistic, it can be used in various digital environments such as games, animations, or virtual reality experiences, etc., for the purpose of creating a fun and youthful atmosphere.",
+      "ground_truth": {
+        "indices": [
+          4
+        ],
+        "labels": [
+          33
+        ],
+        "label_names": [
+          "table"
+        ],
+        "task_type": "object_identification",
+        "sample_id": 4,
+        "object_id": 4,
+        "ground_truth_labels": [
+          "table"
+        ],
+        "original_modelnet_index": 15
+      }
+    },
+    {
+      "sample_id": 5,
+      "num_clouds": 1,
+      "task_type": "object_identification",
+      "prompt": "[Point Cloud]\nWhat is this?",
+      "model_output": "The 3D model represents a cylindrical object exhibiting a vibrant color scheme of blue, red, and green, arranged in a pattern that resembles a barometer. The object appears to have a uniform diameter from top to bottom, demonstrating a consistent shape throughout. It doesn't show any explicit function or usage, but its color arrangement could imply it's meant to be visually appealing, or it could be an abstract representation for a certain real-world object with a corresponding color pattern.",
+      "ground_truth": {
+        "indices": [
+          5
+        ],
+        "labels": [
+          32
+        ],
+        "label_names": [
+          "stool"
+        ],
+        "task_type": "object_identification",
+        "sample_id": 5,
+        "object_id": 5,
+        "ground_truth_labels": [
+          "stool"
+        ],
+        "original_modelnet_index": 6
+      }
+    },
+    {
+      "sample_id": 6,
+      "num_clouds": 1,
+      "task_type": "object_identification",
+      "prompt": "[Point Cloud]\nWhat is this?",
+      "model_output": "The model represents a three-dimensional interconnected networking of nodes, akin to a computer graphic representation of a network or a system map. Each node is depicted with a distinctive green dot, indicating a possible point of interest or an end node in the system. The layout appears to be dynamic, as the nodes are connectively arranged, suggesting possible routes or pathways within the network. In reality, this kind of model could be used in various domains like computer science, network maps, or even social graphs.",
+      "ground_truth": {
+        "indices": [
+          6
+        ],
+        "labels": [
+          26
+        ],
+        "label_names": [
+          "plant"
+        ],
+        "task_type": "object_identification",
+        "sample_id": 6,
+        "object_id": 6,
+        "ground_truth_labels": [
+          "plant"
+        ],
+        "original_modelnet_index": 19
+      }
+    },
+    {
+      "sample_id": 7,
+      "num_clouds": 1,
+      "task_type": "object_identification",
+      "prompt": "[Point Cloud]\nWhat is this?",
+      "model_output": "This is a 3D model of a geometric cartoon figure colored in a blend of red, green, and blue hues. The figure resembles a character from a children's animation, due to its exaggerated shapes and vibrant colors. It seems to be purposefully designed without a specific function, other than being a part of animated content or a game. It might be used for storytelling, gameplay, or educational purposes, entertaining children in a fun, playful manner.",
+      "ground_truth": {
+        "indices": [
+          7
+        ],
+        "labels": [
+          21
+        ],
+        "label_names": [
+          "mantel"
+        ],
+        "task_type": "object_identification",
+        "sample_id": 7,
+        "object_id": 7,
+        "ground_truth_labels": [
+          "mantel"
+        ],
+        "original_modelnet_index": 4
+      }
+    },
+    {
+      "sample_id": 8,
+      "num_clouds": 1,
+      "task_type": "object_identification",
+      "prompt": "[Point Cloud]\nWhat is this?",
+      "model_output": "The 3D object model represents an unusual seat, characterized by a distinct square shape and an attention-grabbing combination of vibrant colors: red, green, and blue. The seat has a unique design where only the front part is supported by a back rest, likely offering less back support for stability. The non-traditional design of the seat hints at a playful or contemporary decoration purpose and may provide less comfort for its user.",
+      "ground_truth": {
+        "indices": [
+          8
+        ],
+        "labels": [
+          30
+        ],
+        "label_names": [
+          "sofa"
+        ],
+        "task_type": "object_identification",
+        "sample_id": 8,
+        "object_id": 8,
+        "ground_truth_labels": [
+          "sofa"
+        ],
+        "original_modelnet_index": 7
+      }
+    },
+    {
+      "sample_id": 9,
+      "num_clouds": 1,
+      "task_type": "object_identification",
+      "prompt": "[Point Cloud]\nWhat is this?",
+      "model_output": "This 3D model represents a rectangular cuboid box with alternate colors of green and black, situated horizontally. The box, likely made of plastic or metal, has a rigid structure. It is blank and featureless, except for the distinct alternation in color that defines its look. The green and black patterns are symmetrical and exact, suggesting a design choice rather than a random or natural occurrence. This box could serve a multitude of uses in everyday life, such as storing small items or as a decor piece.",
+      "ground_truth": {
+        "indices": [
+          9
+        ],
+        "labels": [
+          23
+        ],
+        "label_names": [
+          "night stand"
+        ],
+        "task_type": "object_identification",
+        "sample_id": 9,
+        "object_id": 9,
+        "ground_truth_labels": [
+          "night stand"
+        ],
+        "original_modelnet_index": 5
+      }
+    },
+    {
+      "sample_id": 10,
+      "num_clouds": 1,
+      "task_type": "object_identification",
+      "prompt": "[Point Cloud]\nWhat is this?",
+      "model_output": "The 3D model is a cartoon-like representation of a green cylindrical object, with a simplistic design and bright coloring. The object may symbolize a variety of cylindrical objects found in daily life, such as a bottle or a can. Although it lacks specific details like a lid or a handle, it maintains a universal cylindrical shape that allows for easy identification. The usage of this model can be versatile, as it can fit into different animation contexts or serve as a basic shape for object learning in children's educational software.",
+      "ground_truth": {
+        "indices": [
+          10
+        ],
+        "labels": [
+          37
+        ],
+        "label_names": [
+          "vase"
+        ],
+        "task_type": "object_identification",
+        "sample_id": 10,
+        "object_id": 10,
+        "ground_truth_labels": [
+          "vase"
+        ],
+        "original_modelnet_index": 9
+      }
+    },
+    {
+      "sample_id": 11,
+      "num_clouds": 1,
+      "task_type": "object_identification",
+      "prompt": "[Point Cloud]\nWhat is this?",
+      "model_output": "This 3D model depicts a cube-shaped cartoon box, characterized by its vivid colors and simplistic design. It is divided into various sections, each adorned with different, distinct color patterns, stimulating visual interest and fostering recognition of geometric shapes. This educational toy box, usually found in classrooms or at-home learning environments, facilitates child development and learning by promoting color recognition, spatial awareness, and fine motor skills through play.",
+      "ground_truth": {
+        "indices": [
+          11
+        ],
+        "labels": [
+          14
+        ],
+        "label_names": [
+          "dresser"
+        ],
+        "task_type": "object_identification",
+        "sample_id": 11,
+        "object_id": 11,
+        "ground_truth_labels": [
+          "dresser"
+        ],
+        "original_modelnet_index": 3
+      }
+    },
+    {
+      "sample_id": 12,
+      "num_clouds": 1,
+      "task_type": "object_identification",
+      "prompt": "[Point Cloud]\nWhat is this?",
+      "model_output": "This 3D model represents a table painted in vibrant green and purple hues. The table is uniquely designed with a 'Z' shaped column and rectangular top, adding to its aesthetic appeal. The 'Z' shaped column supports the rectangular top, which is accentuated with strong red lines, giving it a dynamic and energetic look. This table could be used for a variety of purposes, such as dining, working, studying, etc., in a home or office environment. Its striking colors could also add a fun and lively atmosphere to the surroundings.",
+      "ground_truth": {
+        "indices": [
+          12
+        ],
+        "labels": [
+          33
+        ],
+        "label_names": [
+          "table"
+        ],
+        "task_type": "object_identification",
+        "sample_id": 12,
+        "object_id": 12,
+        "ground_truth_labels": [
+          "table"
+        ],
+        "original_modelnet_index": 2
+      }
+    },
+    {
+      "sample_id": 13,
+      "num_clouds": 1,
+      "task_type": "object_identification",
+      "prompt": "[Point Cloud]\nWhat is this?",
+      "model_output": "The 3D object is a vibrant, green toy car designed with a cartoon-style aesthetic. The toy car boasts an array of colorful, multicolored windows, adding to its playful appearance. While the model seems to be a simple one-seater car without any added functionality like remote control, it's perfect for a child's imaginative play. It can stimulate creativity, promote motor skills, and provide entertainment. The cartoon-like design also makes it appealing to a younger audience who may use it in games or animations.",
+      "ground_truth": {
+        "indices": [
+          13
+        ],
+        "labels": [
+          7
+        ],
+        "label_names": [
+          "car"
+        ],
+        "task_type": "object_identification",
+        "sample_id": 13,
+        "object_id": 13,
+        "ground_truth_labels": [
+          "car"
+        ],
+        "original_modelnet_index": 11
+      }
+    },
+    {
+      "sample_id": 14,
+      "num_clouds": 1,
+      "task_type": "object_identification",
+      "prompt": "[Point Cloud]\nWhat is this?",
+      "model_output": "The 3D object model is a vibrant, whimsical representation of a unique drum set, rendered in a cartoonish style. The stylized design showcases simplification and a bit of exaggeration, characteristic of a cartoon aesthetic. Each element is brightly colored and distinct, contributing to an overall playful and quirky charm. The intended usage of this model could be in animated media, game designs, or other digital art projects, especially those aimed at children or with a light-hearted theme.",
+      "ground_truth": {
+        "indices": [
+          14
+        ],
+        "labels": [
+          17
+        ],
+        "label_names": [
+          "guitar"
+        ],
+        "task_type": "object_identification",
+        "sample_id": 14,
+        "object_id": 14,
+        "ground_truth_labels": [
+          "guitar"
+        ],
+        "original_modelnet_index": 17
+      }
+    },
+    {
+      "sample_id": 15,
+      "num_clouds": 1,
+      "task_type": "object_identification",
+      "prompt": "[Point Cloud]\nWhat is this?",
+      "model_output": "The object is a three-dimensional model of a unique and colorful car with a combination of blue, green, and indigo-blue paint jobs. It gives the impression of an artistic expression with its vibrant colors. The design looks modern, signifying the progress in automobile design. The model possibly represents a concept car, showcasing innovation in automotive design beyond just transportation function. It could be inferred that this model might be used in an automotive design presentation, a virtual reality game, or a 3D animation.",
+      "ground_truth": {
+        "indices": [
+          15
+        ],
+        "labels": [
+          7
+        ],
+        "label_names": [
+          "car"
+        ],
+        "task_type": "object_identification",
+        "sample_id": 15,
+        "object_id": 15,
+        "ground_truth_labels": [
+          "car"
+        ],
+        "original_modelnet_index": 0
+      }
+    },
+    {
+      "sample_id": 16,
+      "num_clouds": 1,
+      "task_type": "object_identification",
+      "prompt": "[Point Cloud]\nWhat is this?",
+      "model_output": "The 3D model in question depicts a cylindrical-shaped object that possesses a uniform, uninterrupted body. Its surface is adorned with an array of vivid, distinctive color patches, which are equally distributed over the entire length. The design suggests it could be a piece of abstract art or a character or creature from a children's story or game. Its functionality is uncertain, but it could be a toy, a decorative item, or a storytelling aid.",
+      "ground_truth": {
+        "indices": [
+          16
+        ],
+        "labels": [
+          5
+        ],
+        "label_names": [
+          "bottle"
+        ],
+        "task_type": "object_identification",
+        "sample_id": 16,
+        "object_id": 16,
+        "ground_truth_labels": [
+          "bottle"
+        ],
+        "original_modelnet_index": 14
+      }
+    },
+    {
+      "sample_id": 17,
+      "num_clouds": 1,
+      "task_type": "object_identification",
+      "prompt": "[Point Cloud]\nWhat is this?",
+      "model_output": "The 3D object in question is a multifaceted rectangular box exhibiting a striking, varied color scheme. The box is predominantly green, but features bright blue accents along its sides and a deep red hue on its base, presenting a vibrant contrast. The many-colored box could be used for various purposes, such as a toy, a piece of abstract art, or a product packaging container, depending on the context.",
+      "ground_truth": {
+        "indices": [
+          17
+        ],
+        "labels": [
+          16
+        ],
+        "label_names": [
+          "glass box"
+        ],
+        "task_type": "object_identification",
+        "sample_id": 17,
+        "object_id": 17,
+        "ground_truth_labels": [
+          "glass box"
+        ],
+        "original_modelnet_index": 16
+      }
+    },
+    {
+      "sample_id": 18,
+      "num_clouds": 1,
+      "task_type": "object_identification",
+      "prompt": "[Point Cloud]\nWhat is this?",
+      "model_output": "This is a three-dimensional model of a vibrant cartoon character shaped in a rectangle. The model is rendered in various shades of green, bringing to life a lively and energetic character vibe. Its cartoonish aesthetic and playful form might be appealing to children, suggesting possible use in children's animations, educational content, or interactive gaming.",
+      "ground_truth": {
+        "indices": [
+          18
+        ],
+        "labels": [
+          35
+        ],
+        "label_names": [
+          "toilet"
+        ],
+        "task_type": "object_identification",
+        "sample_id": 18,
+        "object_id": 18,
+        "ground_truth_labels": [
+          "toilet"
+        ],
+        "original_modelnet_index": 18
+      }
+    },
+    {
+      "sample_id": 19,
+      "num_clouds": 1,
+      "task_type": "object_identification",
+      "prompt": "[Point Cloud]\nWhat is this?",
+      "model_output": "The 3D object model is a multi-colored block. It has vivid shades of blue, red, green, and black, distributed in a seemingly random pattern across the entire surface of the block. This object, due to its lack of specific functional features, can be considered a piece of abstract or modern art. It may be used for aesthetic purposes in various settings such as art exhibits, architectural modeling, or even interior design.",
+      "ground_truth": {
+        "indices": [
+          19
+        ],
+        "labels": [
+          39
+        ],
+        "label_names": [
+          "xbox"
+        ],
+        "task_type": "object_identification",
+        "sample_id": 19,
+        "object_id": 19,
+        "ground_truth_labels": [
+          "xbox"
+        ],
+        "original_modelnet_index": 10
+      }
+    }
+  ]
+}

@@ -8,8 +8,31 @@ import torch
 
 import numpy as np
 import os
+import yaml
 
 IGNORE_INDEX = -100
+
+def cfg_from_yaml_file(config_file):
+    """YAML設定ファイルを読み込む"""
+    with open(config_file, 'r') as f:
+        try:
+            config = yaml.safe_load(f)
+        except yaml.YAMLError as exc:
+            print(f"Error reading YAML file: {exc}")
+            return None
+    
+    # Namespace-like object for backward compatibility
+    class ConfigDict(dict):
+        def __getattr__(self, name):
+            try:
+                return self[name]
+            except KeyError:
+                raise AttributeError(f"'{type(self).__name__}' object has no attribute '{name}'")
+        
+        def __setattr__(self, name, value):
+            self[name] = value
+    
+    return ConfigDict(config)
 
 # * Sample Usage:
 # * from utils import LRUCache
@@ -234,3 +257,145 @@ def pc_normalize(pc):
     m = np.max(np.sqrt(np.sum(pc**2, axis=1)))
     pc = pc / m
     return pc
+
+def preprocess_multimodal_multi_cloud(
+    sources: Sequence[str],
+    point_backbone_config: dict,
+    multi_cloud_indicators: list,
+) -> Dict:
+    """複数点群用の前処理関数"""
+    point_token_len = point_backbone_config['point_token_len']
+    cloud_token_ids = point_backbone_config.get('cloud_token_ids', {})
+    
+    for source in sources:
+        for sentence in source:
+            # 各クラウドインジケーターを対応するトークンに置換
+            for i, indicator in enumerate(multi_cloud_indicators):
+                if indicator in sentence["value"]:
+                    # クラウドトークンの取得
+                    start_token = cloud_token_ids.get(f'cloud_{i}_start', f'<cloud_{i}>')
+                    end_token = cloud_token_ids.get(f'cloud_{i}_end', f'</cloud_{i}>')
+                    
+                    # 点群トークンの作成
+                    replace_token = point_backbone_config['default_point_patch_token'] * point_token_len
+                    if point_backbone_config['mm_use_point_start_end']:
+                        replace_token = point_backbone_config['default_point_start_token'] + replace_token + point_backbone_config['default_point_end_token']
+                    
+                    # 最終的な置換文字列
+                    final_token = start_token + replace_token + end_token
+                    sentence["value"] = sentence["value"].replace(indicator, final_token)
+    
+    return sources
+
+@dataclass
+class MultiCloudDataCollatorForPointTextDataset(object):
+    """マルチクラウド対応のコレーター"""
+
+    tokenizer: transformers.PreTrainedTokenizer
+
+    def __call__(self, instances: Sequence[Dict]) -> Dict[str, torch.Tensor]:
+        input_ids, labels = tuple([instance[key] for instance in instances]
+                                  for key in ("input_ids", "labels"))
+        input_ids = torch.nn.utils.rnn.pad_sequence(
+            input_ids,
+            batch_first=True,
+            padding_value=self.tokenizer.pad_token_id)
+        labels = torch.nn.utils.rnn.pad_sequence(labels,
+                                                 batch_first=True,
+                                                 padding_value=IGNORE_INDEX)
+        batch = dict(
+            input_ids=input_ids,
+            labels=labels,
+            attention_mask=input_ids.ne(self.tokenizer.pad_token_id),
+        )
+
+        # マルチクラウドとシングルクラウドの混在対応
+        has_multi_cloud = any(instance.get('is_multi_cloud', False) for instance in instances)
+        has_single_cloud = any('point_clouds' in instance for instance in instances)
+        
+        if has_multi_cloud:
+            # マルチクラウドデータの処理
+            point_clouds_lists = []
+            for instance in instances:
+                if instance.get('is_multi_cloud', False):
+                    point_clouds_lists.append(instance.get('point_clouds_list', []))
+                elif 'point_clouds' in instance:
+                    # シングルクラウドをマルチクラウド形式に変換
+                    point_clouds_lists.append([instance['point_clouds']])
+                else:
+                    point_clouds_lists.append([])
+            
+            batch['point_clouds_list'] = point_clouds_lists
+            batch['has_multi_cloud'] = True
+        
+        if has_single_cloud and not has_multi_cloud:
+            # 従来のシングルクラウド処理
+            point_clouds = [instance['point_clouds'] for instance in instances if 'point_clouds' in instance]
+            if point_clouds:
+                if all(x is not None and x.shape == point_clouds[0].shape for x in point_clouds):
+                    batch['point_clouds'] = torch.stack(point_clouds)
+                else:
+                    batch['point_clouds'] = point_clouds
+            batch['has_multi_cloud'] = False
+
+        return batch
+
+# ===== 新規: マルチクラウド用のユーティリティ関数 =====
+
+def load_multi_cloud_point_clouds(data_path, object_ids, pointnum=8192, use_color=False, normalize=True):
+    """複数の点群を読み込む"""
+    point_clouds = []
+    for object_id in object_ids:
+        if object_id is not None:
+            try:
+                pc = load_objaverse_point_cloud(data_path, object_id, pointnum, use_color)
+                if normalize:
+                    pc = pc_norm(pc)
+                point_clouds.append(pc)
+            except Exception as e:
+                print(f"Warning: Failed to load {object_id}: {e}")
+                point_clouds.append(None)
+        else:
+            point_clouds.append(None)
+    return point_clouds
+
+def validate_multi_cloud_batch(batch, logger=None):
+    """マルチクラウドバッチの検証"""
+    if 'point_clouds_list' not in batch:
+        return True
+    
+    point_clouds_lists = batch['point_clouds_list']
+    for i, pc_list in enumerate(point_clouds_lists):
+        if not isinstance(pc_list, list):
+            if logger:
+                logger.warning(f"Sample {i}: point_clouds_list is not a list")
+            return False
+        
+        for j, pc in enumerate(pc_list):
+            if pc is not None and not isinstance(pc, torch.Tensor):
+                if logger:
+                    logger.warning(f"Sample {i}, Cloud {j}: not a tensor")
+                return False
+    
+    return True
+
+def create_multi_cloud_conversation_template():
+    """マルチクラウド用の会話テンプレート作成"""
+    templates = {
+        'shape_matching': [
+            "Compare these two 3D shapes: <cloud_0> and <cloud_1>. Are they compatible for assembly?",
+            "Analyze the geometric compatibility between <cloud_0> and <cloud_1>.",
+            "Determine if <cloud_0> can be properly connected to <cloud_1>."
+        ],
+        'part_assembly': [
+            "Given these parts <cloud_0>, <cloud_1>, and <cloud_2>, what is the correct assembly order?",
+            "How should these components be assembled: <cloud_0>, <cloud_1>, <cloud_2>?",
+            "Describe the step-by-step assembly process for these parts: <cloud_0>, <cloud_1>, <cloud_2>."
+        ],
+        'geometric_reasoning': [
+            "What is the spatial relationship between <cloud_0> and <cloud_1>?",
+            "Describe how <cloud_0> is positioned relative to <cloud_1>.",
+            "Compare the sizes and orientations of <cloud_0> and <cloud_1>."
+        ]
+    }
+    return templates

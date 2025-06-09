@@ -1,0 +1,125 @@
+{
+  "prompt": "What is this?",
+  "results": [
+    {
+      "object_id": 0,
+      "ground_truth": 25,
+      "model_output": "A minimalistic three-dimensional representation of a seat, uniformly colored in black. This model may lack intricate details but embodies the fundamental elements of a typical seat: a flat surface for sitting and a supportive structure underneath. Although it lacks additional elements such as armrests or a backrest, it suggests a simple and functional design, suitable for various settings like a dining room, a study, or a public area.",
+      "label_name": "piano"
+    },
+    {
+      "object_id": 1,
+      "ground_truth": 26,
+      "model_output": "The 3D model represents an aesthetically designed object comprising a rectangular grey vase housing a shrub. The grey vase, possibly made of ceramic or metal, appears to be sturdy and capable of sustaining the life of the plant. The shrub is planted and grown in it, contributing to a realistic and live appearance. It can be used as a decorative item in indoor or outdoor environments, creating a serene and soothing ambiance.",
+      "label_name": "plant"
+    },
+    {
+      "object_id": 2,
+      "ground_truth": 2,
+      "model_output": "The 3D model represents a large, firm, black mattress. It appears to be a rectangular shape, densely packed with black-colored springs, suggesting it's designed for comfort and support. The black color indicates it may be covered in a material like vinyl or fabric, which is typical for mattresses. Given its size and structure, it would typically fit in a master bedroom in a residential setting, and could be used for sleeping or resting purposes.",
+      "label_name": "bed"
+    },
+    {
+      "object_id": 3,
+      "ground_truth": 16,
+      "model_output": "This is a 3D model of a secure, black box, featuring a built-in lock. This sturdy box is often used for storing valuable items or documents, and its black color suggests subtlety and elegance. The lock appears to be robust, promising strength and security, and it is likely a solid, durable object overall. It is a practical and aesthetically pleasing design, commonly seen in personal and professional settings for various needs.",
+      "label_name": "glass box"
+    },
+    {
+      "object_id": 4,
+      "ground_truth": 33,
+      "model_output": "This is a 3D model of a traditional black-coloured, pedestrian table. The table is minimalist in design, perfect for decorating a home or office environment. With a smooth, polished surface, this functional piece of furniture can be used for various purposes such as dining, studying, or as a coffee table. Its black hue makes it versatile in matching various color schemes.",
+      "label_name": "table"
+    },
+    {
+      "object_id": 5,
+      "ground_truth": 32,
+      "model_output": "This is a 3D model of a cylindrical object adorned with numerous small, evenly-spread, circular holes. The object's purpose isn't clearly indicated, but it could potentially be a decorative item or a unique type of speaker. The layout of the holes gives it a distinctive look and might enable it to emit sound or light in different ways.",
+      "label_name": "stool"
+    },
+    {
+      "object_id": 6,
+      "ground_truth": 26,
+      "model_output": "A 3D model of a plant with detailed, dark green leaves. The plant is sculpted with a high level of realism, showcasing individual leaves that are densely packed, greatly emphasizing the plant's green palette. The 3D model is likely to be used in digital landscape design or virtual botanic garden settings.",
+      "label_name": "plant"
+    },
+    {
+      "object_id": 7,
+      "ground_truth": 21,
+      "model_output": "The 3D object model represents a simplistic and minimalistic cubic drawer, painted in a uniform black color. It is designed with two small legs, offering support and stability to the piece. The drawer appears to be open from the bottom, suggesting that it is designed to accommodate and organize items such as clothes or small artifacts. Its cubic structure, along with its open-from-bottom design, implies an easy access to its contents, making it a functional piece of furniture that can be used in day-to-day life for storage purposes.",
+      "label_name": "mantel"
+    },
+    {
+      "object_id": 8,
+      "ground_truth": 30,
+      "model_output": "This is a 3D object model of a black, plush, coach or armchair. It features a sleek design with a backrest and two armrests for added comfort and support. Made from a material resembling leather, it exudes a sophisticated look. With its design, it's ideal for use in homes or offices, offering a comfortable seating solution for prolonged periods of time, such as reading, working, or relaxing.",
+      "label_name": "sofa"
+    },
+    {
+      "object_id": 9,
+      "ground_truth": 23,
+      "model_output": "The 3D object model is of a dark-colored steel storage cabinet featuring a unique design. It has four evenly spaced legs that ensure stability, and a top shelf designed specifically for accommodating books, adding to its functionality. This cabinet is indicative of an industrial aesthetic, suggesting its suitability for environments such as workshops, garages, or studios. Its sturdy construction allows for the storage of heavy items, providing a practical solution for keeping essential items organized and protected.",
+      "label_name": "night stand"
+    },
+    {
+      "object_id": 10,
+      "ground_truth": 37,
+      "model_output": "The 3D object model is a cylindrical, brown-colored container with a matching circular brown lid. Its design suggests it could be used for storage, potentially food items such as pasta, grains, or cereal in a kitchen or pantry. The lid, crucial for maintaining freshness and preventing spillage, perfectly fits on top of the container, ensuring a secure closure. The item showcases a common household item and its functional usage is inferred for daily food preparation needs.",
+      "label_name": "vase"
+    },
+    {
+      "object_id": 11,
+      "ground_truth": 14,
+      "model_output": "This is a 3D model of a solid, cubic object coloured in a neutral grey shade. One of its faces features a distinctive, half-circular cut, giving it a unique shape and visual interest. The nature of the object suggests it could serve as a storage container or could be used in architectural designs, possibly as a building block or a decorative element.",
+      "label_name": "dresser"
+    },
+    {
+      "object_id": 12,
+      "ground_truth": 33,
+      "model_output": "This is a 3D model of an animated black table. The table, with its smooth, glossy surface, is rendered in stark, pure black, giving it a unique and modern appearance. Though simple in design, its animation brings an element of life to it, making it suitable for a variety of digital applications, including games, virtual reality spaces, and digital art projects.",
+      "label_name": "table"
+    },
+    {
+      "object_id": 13,
+      "ground_truth": 7,
+      "model_output": "This is a 3D model of a whimsical, cartoon-style Lamborghini sports car. The model captures the iconic aerodynamic design of Lamborghini, with a tapered nose, a wedge-shaped hood, and a curved roofline, all rendered in a playful, exaggerated style. The car is completely black, highlighting its contours and volume, and it is set on four wheels, emphasizing its supercar status. This model is often seen in animated movies, video games or as a toy model.",
+      "label_name": "car"
+    },
+    {
+      "object_id": 14,
+      "ground_truth": 17,
+      "model_output": "The 3D model represents a cartoon-style electric guitar. It has a simplified, stylized appearance, often associated with cartoon art, with bold lines and bright colors. The instrument's shape, with its narrow and wide body, long neck, and six strings is recognizable. Its potential usage could be in animated media, video games, or educational programs to introduce musical concepts to children in a fun and approachable way.",
+      "label_name": "guitar"
+    },
+    {
+      "object_id": 15,
+      "ground_truth": 7,
+      "model_output": "This 3D object model depicts a miniature toy car, predominantly black in color. The vehicle stands out with a bold, grey, rectangular-shaped side window that adds a unique touch to its design. Made from a non-reflective material, the model is realistically detailed to closely resemble an actual car. This makes it an ideal item for play for children or a collector's item for enthusiasts.",
+      "label_name": "car"
+    },
+    {
+      "object_id": 16,
+      "ground_truth": 5,
+      "model_output": "This is a 3D object model of a rectangular-shaped bottle, having a fully black and opaque appearance. The bottle comes with a circular mouth for ease of liquid intake. Its robust and thick structure possibly signifies it could be a container for liquids like water, juice, or soft drinks. Commonly seen in everyday life, it is useful for hydration purposes, especially in hot weather when one needs to stay hydrized to avoid dehydration.",
+      "label_name": "bottle"
+    },
+    {
+      "object_id": 17,
+      "ground_truth": 16,
+      "model_output": "The 3D object model is a sleek, rectangular panel, predominantly black in colour, with two side wings that are also black. The panel appears to be designed in a minimalist style, suggesting it could be a part of an modern electronic device, such as a computer tower or a game console. The wings on either side might function to support the panel or possibly, they could be used for ventilation purposes.",
+      "label_name": "glass box"
+    },
+    {
+      "object_id": 18,
+      "ground_truth": 35,
+      "model_output": "The 3D model portrays a traditional, black-colored toilet tank with a noticeable, open base. The toilet tank is designed to hold a substantial amount of liquid, commonly water, and is typically connected to a household's plumbing system. This allows the toilet to function, with the waste water being transported away from the household. The open base of the tank indicates a manual flush mode, which is common in residential toilets.",
+      "label_name": "toilet"
+    },
+    {
+      "object_id": 19,
+      "ground_truth": 39,
+      "model_output": "The 3D object model showcases a cartoon-style tool, rendered distinctly in black. The tool is not explicitly identifiable but is assumed to be a typical hand tool, possibly used in construction or repair activities. The cartoon aesthetics suggest it might be a part of a digital game or animation or a child-friendly application. Even though it's not realistic, its design contributes to the recognizable and familiar visual language of tools in daily life.",
+      "label_name": "xbox"
+    }
+  ]
+}
